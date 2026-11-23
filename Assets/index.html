@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      
+      <!-- Your custom marker -->
+      <a-marker type="pattern" url="assets/pattern-marker.patt">
+        
+        <!-- Parent Entity: Handles the spinning spin (Y-axis) and the hopping motion -->
+        <a-entity position="0 0.5 0"
+                  animation__hop="property: position; from: 0 0.5 0; to: 0 1.2 0; dir: alternate; loop: true; dur: 1200; easing: easeInOutSine"
+                  animation__spin="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
+          
+          <!-- Child Entity: Tilts the text flat so it rotates horizontally like a rotor blade -->
+          <a-entity rotation="-90 0 0">
+            
+            <!-- Main Text -->
+            <a-text value="DANIEL LEE IS AWESOME" 
+                    align="center" 
+                    color="#00FF88" 
+                    scale="2 2 2"
+                    side="double">
+            </a-text>
+
+            <!-- Shadow Text Layer for 3D depth -->
+            <a-text value="DANIEL LEE" 
+                    align="center" 
+                    color="#003311" 
+                    position="0 0 -0.05"
+                    scale="2 2 2"
+                    side="double">
+            </a-text>
+
+          </a-entity>
+          
+        </a-entity>
+
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
